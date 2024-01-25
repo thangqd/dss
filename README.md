@@ -1,4 +1,4 @@
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dss123.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mkdc-dss123.streamlit.app/)
 
 # MKDC DSS 1,2,3
 This repository contains code for Decision Support System 1, 2, 3 within the Mekong Delta Centre.
