@@ -9,13 +9,12 @@ import numpy as np
 from streamlit_folium import st_folium, folium_static
 # from pandas.api.types import is_numeric_dtype
 import sys, os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'lib'))
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'data'))
+sys.path.append(os.path.join(os.path.dirname(__file__),'lib'))
+sys.path.append(os.path.join(os.path.dirname(__file__),'data'))
 
 from dss1 import dss1_final
 from dss2 import dss2_final
 from dss3 import dss3_final
-from dss4 import dss4_final
 import folium
 from folium.plugins import MarkerCluster, FastMarkerCluster, Fullscreen
 
@@ -34,11 +33,11 @@ st.set_page_config(
 
 class dss():    
     def __init__(self):
-        st.header("DSS Calculation Module")
-        st.subheader("©2023 by watertech.vn")    
+        st.header("DSS1,2,3 Calculation Module")
+        # st.subheader("©2023 by watertech.vn")    
     def gui(self):    
-        DSS_list = ['DSS1','DSS2','DSS3','DSS4','DSS6']
-        DSS_url = ['../data/dss1.csv','../data/dss2.csv','../data/dss3.csv','../data/dss4.csv','../data/dss6.csv']                
+        DSS_list = ['DSS1','DSS2','DSS3']
+        DSS_url = ['./data/dss1.csv','./data/dss2.csv','./data/dss3.csv']                
         self.dss_calc = st.selectbox('Choose a DSS to calculate',DSS_list)
         self.selected_index = DSS_list.index(self.dss_calc)
         self.url = st.text_input(
@@ -49,7 +48,7 @@ class dss():
         dss1, dss2, dss3, dss4 = None, None, None, None
         form = st.form(key="form_settings")
         with form:           
-            # self.uploaded_file = os.path.join(os.path.dirname(__file__), '../data/dss1.csv')
+            # self.uploaded_file = os.path.join(os.path.dirname(__file__), './data/dss1.csv')
             if (self.url or self.uploaded_file):
                 if self.dss_calc == 'DSS1':
                     self.fromdate  = st.date_input("From date", pd.to_datetime('today')- timedelta(days=1000))
@@ -66,7 +65,7 @@ class dss():
                         dss1 = dss1_final(self.url,self.fromdate,self.todate,self.dss_status_callback)
                         dss1["Date"] = pd.to_datetime(dss1["Date"]).dt.date
                         try:
-                            st.dataframe(dss1.style.applymap(self.color,subset=['WQI_Color']))          
+                            st.dataframe(dss1.style.map(self.color,subset=['WQI_Color']))          
                         except: st.write(dss1)
                         # self.download_csv(dss1,self.dss_status_callback)
                         # self.download_geojson(dss1,self.dss_status_callback)
@@ -76,7 +75,7 @@ class dss():
                         # self.dss_result = self.calculate_dss(self.url,self.fromdate,self.todate, self.dss_status_callback) 
                         dss2 = dss2_final(self.url,self.dss_status_callback)
                         try:
-                            st.dataframe(dss2.style.applymap(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
+                            st.dataframe(dss2.style.map(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
                         except: st.write(dss2)
                         # self.download_csv(dss2,self.dss_status_callback)
                         # self.download_geojson(dss2,self.dss_status_callback)
@@ -85,14 +84,12 @@ class dss():
                     elif self.dss_calc == "DSS3":
                         dss3 = dss3_final(self.url,self.dss_status_callback)
                         try:
-                            st.dataframe(dss3.style.applymap(self.color,subset=['Risk_Color']))          
+                            st.dataframe(dss3.style.map(self.color,subset=['Risk_Color']))          
                         except: st.write(dss3)
                         # self.download_csv(dss3,self.dss_status_callback)
                         # self.download_geojson(dss3,self.dss_status_callback)
                         # self.viewmap_dss3(dss3,dss_status_callback = None)
-                    elif self.dss_calc == "DSS4":
-                        dss4 = dss4_final(self.url,self.dss_status_callback)
-                        st.write (dss4)
+                    
                 
                 elif self.uploaded_file:
                     # self.dss_result = self.calculate_dss(self.uploaded_file,self.fromdate,self.todate, self.dss_status_callback)
@@ -126,9 +123,6 @@ class dss():
                     # self.download_geojson(dss3,self.dss_status_callback)
                     # self.viewmap_dss3(dss3,dss_status_callback = None)
                     # st.button('Calculate DSS', on_click=self.dss_result)  
-                elif self.dss_calc == "DSS4":
-                    dss4 = dss4_final(self.url,self.dss_status_callback)
-                    st.write (dss4)
         if dss1 is not None:
             self.viewmap_dss1(dss1,self.dss_status_callback)
             self.download_csv(dss1,self.dss_status_callback)
