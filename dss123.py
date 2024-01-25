@@ -22,7 +22,7 @@ from folium.plugins import MarkerCluster, FastMarkerCluster, Fullscreen
 # from streamlit_extras.buy_me_a_coffee import button
 from datetime import timedelta
 st.set_page_config(
-            page_title="DSS Calculation Module",
+            page_title="DSS 1, 2, 3 Calculation Module",
             page_icon=":aquarius:",
             layout="centered",
             initial_sidebar_state="auto",
@@ -33,7 +33,7 @@ st.set_page_config(
 
 class dss():    
     def __init__(self):
-        st.header("DSS1,2,3 Calculation Module")
+        st.header("DSS 1,2,3 Calculation Module")
         # st.subheader("©2023 by watertech.vn")    
     def gui(self):    
         DSS_list = ['DSS1','DSS2','DSS3']
