@@ -5,7 +5,7 @@ This repository contains code for Decision Support System 1, 2, 3 within the Mek
 
 # Water Management Decision Support System for the Mekong Delta
 
-- DSS 1, 2, 3 is designed to calculate water quality, water supply and water shortage risk for the Mekong Delta Centre. 
+- DSS 1, 2, 3 is designed to calculate water quality, water supply, and water shortage risk for the Mekong Delta Centre. 
 
 ## Features
 
