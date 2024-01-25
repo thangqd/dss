@@ -10,6 +10,8 @@ from streamlit_folium import st_folium, folium_static
 # from pandas.api.types import is_numeric_dtype
 import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'lib'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'data'))
+
 from dss1 import dss1_final
 from dss2 import dss2_final
 from dss3 import dss3_final
@@ -36,7 +38,7 @@ class dss():
         st.subheader("©2023 by watertech.vn")    
     def gui(self):    
         DSS_list = ['DSS1','DSS2','DSS3','DSS4','DSS6']
-        DSS_url = ['./data/dss1.csv','./data/dss2.csv','./data/dss3.csv','./data/dss4.csv','./data/dss6.csv']                
+        DSS_url = ['../data/dss1.csv','../data/dss2.csv','../data/dss3.csv','../data/dss4.csv','../data/dss6.csv']                
         self.dss_calc = st.selectbox('Choose a DSS to calculate',DSS_list)
         self.selected_index = DSS_list.index(self.dss_calc)
         self.url = st.text_input(
