@@ -3,15 +3,15 @@
 # MKDC DSS 1,2,3
 This repository contains code for Decision Support System 1, 2, 3 within the Mekong Delta Centre.
 
-# Land Use Decision Support System for the Mekong Delta
+# Water Management Decision Support System for the Mekong Delta
 
-- DSS1,2,3 is designed to calculate water quality, water supply and water shortage risk for the Mekong Delta Centre. 
+- DSS 1, 2, 3 is designed to calculate water quality, water supply and water shortage risk for the Mekong Delta Centre. 
 
 ## Features
 
-- DSS1: calculate Water Quality Index (WQI)
-- DSS2: calculate Water Supply Capacity Index (WSCI)
-- DSS3: calculate Water Shortage Risk Index (WSRI)
+- DSS 1: calculate Water Quality Index (WQI)
+- DSS 2: calculate Water Supply Capacity Index (WSCI)
+- DSS 3: calculate Water Shortage Risk Index (WSRI)
 	
 
 ## Prerequisites
