@@ -22,18 +22,18 @@ from folium.plugins import MarkerCluster, FastMarkerCluster, Fullscreen
 # from streamlit_extras.buy_me_a_coffee import button
 from datetime import timedelta
 st.set_page_config(
-            page_title="DSS 1, 2, 3 Calculation Module",
+            page_title="MKDC DSS 1, 2, 3",
             page_icon=":aquarius:",
             layout="centered",
             initial_sidebar_state="auto",
-            menu_items={
-                'About': "https://thangqd.github.io"
-            }
+            # menu_items={
+            #     'About': "https://thangqd.github.io"
+            # }
 )
 
 class dss():    
     def __init__(self):
-        st.header("DSS 1,2,3 Calculation Module")
+        st.header("MKDC DSS 1, 2, 3")
         # st.subheader("©2023 by watertech.vn")    
     def gui(self):    
         DSS_list = ['DSS1','DSS2','DSS3']
@@ -143,8 +143,8 @@ class dss():
             self.download_csv(dss4,self.dss_status_callback)
 
 
-        st.divider()
-        st.caption("Coded by [Thang Quach](https://thangqd.github.io)")
+        # st.divider()
+        # st.caption("Coded by [Thang Quach](https://thangqd.github.io)")
         # button(username="quachdongthang", floating=False, width=221)
 
     
