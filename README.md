@@ -25,22 +25,18 @@ This repository contains code for Decision Support System 1, 2, 3 within the Mek
     git clone https://github.com/thangqd/dss123.git
 	```
 	
-2. **Create a .env file with an API key**
-
-To access the Lizard webservice a valid API key is required. This is supplied in a .env file. An example file is available in the repo. 
-	
-3. **Build the Docker Image:**
+2. **Build the Docker Image:**
 	```bash
 	cd dss123
 	docker-compose build 
 	```
 	
-4. **Run the Docker Container:**
+3. **Run the Docker Container:**
     ```bash
     docker-compose up
 	```
 
-5. **Access the DSS:**
+4. **Access the DSS:**
 
 Open your web browser and go to http://localhost:8501 to interact with the Decision Support System.
 
