@@ -65,7 +65,7 @@ class dss():
                         dss1 = dss1_final(self.url,self.fromdate,self.todate,self.dss_status_callback)
                         dss1["Date"] = pd.to_datetime(dss1["Date"]).dt.date
                         try:
-                            st.dataframe(dss1.style.map(self.color,subset=['WQI_Color']))          
+                            st.dataframe(dss1.style.applymap(self.color,subset=['WQI_Color']))          
                         except: st.write(dss1)
                         # self.download_csv(dss1,self.dss_status_callback)
                         # self.download_geojson(dss1,self.dss_status_callback)
@@ -75,7 +75,7 @@ class dss():
                         # self.dss_result = self.calculate_dss(self.url,self.fromdate,self.todate, self.dss_status_callback) 
                         dss2 = dss2_final(self.url,self.dss_status_callback)
                         try:
-                            st.dataframe(dss2.style.map(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
+                            st.dataframe(dss2.style.applymap(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
                         except: st.write(dss2)
                         # self.download_csv(dss2,self.dss_status_callback)
                         # self.download_geojson(dss2,self.dss_status_callback)
@@ -84,7 +84,7 @@ class dss():
                     elif self.dss_calc == "DSS3":
                         dss3 = dss3_final(self.url,self.dss_status_callback)
                         try:
-                            st.dataframe(dss3.style.map(self.color,subset=['Risk_Color']))          
+                            st.dataframe(dss3.style.applymap(self.color,subset=['Risk_Color']))          
                         except: st.write(dss3)
                         # self.download_csv(dss3,self.dss_status_callback)
                         # self.download_geojson(dss3,self.dss_status_callback)
@@ -104,25 +104,25 @@ class dss():
                         # self.download_geojson(dss1,self.dss_status_callback)
                         # self.viewmap_dss1(dss1,dss_status_callback = None)
                 
-                elif self.dss_calc == 'DSS2': 
-                        # self.dss_result = self.calculate_dss(self.url,self.fromdate,self.todate, self.dss_status_callback) 
-                        dss2 = dss2_final(self.uploaded_file,self.dss_status_callback)
+                    elif self.dss_calc == 'DSS2': 
+                            # self.dss_result = self.calculate_dss(self.url,self.fromdate,self.todate, self.dss_status_callback) 
+                            dss2 = dss2_final(self.uploaded_file,self.dss_status_callback)
+                            try:
+                                st.dataframe(dss2.style.applymap(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
+                            except: st.write(dss2)
+                            # self.download_csv(dss2,self.dss_status_callback)
+                            # self.download_geojson(dss2,self.dss_status_callback)
+                            # self.viewmap_dss2(dss2,dss_status_callback = None)   
+                    
+                    elif self.dss_calc == "DSS3":
+                        dss3 = dss3_final(self.uploaded_file,self.dss_status_callback)
                         try:
-                            st.dataframe(dss2.style.applymap(self.color,subset=['W_SCI1_Color','W_SCI2_Color','W_SCI3_Color']))          
-                        except: st.write(dss2)
-                        # self.download_csv(dss2,self.dss_status_callback)
-                        # self.download_geojson(dss2,self.dss_status_callback)
-                        # self.viewmap_dss2(dss2,dss_status_callback = None)   
-                
-                elif self.dss_calc == "DSS3":
-                    dss3 = dss3_final(self.uploaded_file,self.dss_status_callback)
-                    try:
-                        st.dataframe(dss3.style.applymap(self.color,subset=['Risk_Color']))          
-                    except: st.write(dss3)
-                    # self.download_csv(dss3,self.dss_status_callback)
-                    # self.download_geojson(dss3,self.dss_status_callback)
-                    # self.viewmap_dss3(dss3,dss_status_callback = None)
-                    # st.button('Calculate DSS', on_click=self.dss_result)  
+                            st.dataframe(dss3.style.applymap(self.color,subset=['Risk_Color']))          
+                        except: st.write(dss3)
+                        # self.download_csv(dss3,self.dss_status_callback)
+                        # self.download_geojson(dss3,self.dss_status_callback)
+                        # self.viewmap_dss3(dss3,dss_status_callback = None)
+                        # st.button('Calculate DSS', on_click=self.dss_result)  
         if dss1 is not None:
             self.viewmap_dss1(dss1,self.dss_status_callback)
             self.download_csv(dss1,self.dss_status_callback)

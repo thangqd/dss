@@ -23,5 +23,5 @@ jobs:
         run: |
           docker login --username ${{ github.actor }} --password ${{ secrets.CR_PAT }} ghcr.io
           docker-compose build
-          docker tag dss123_web ghcr.io/thangqd/dss123:latest
+          docker tag dss123-web ghcr.io/thangqd/dss123:latest
           docker push ghcr.io/thangqd/dss123:latest
